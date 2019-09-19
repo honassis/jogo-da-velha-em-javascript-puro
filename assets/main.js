@@ -94,7 +94,6 @@ function reiniciar(){
     for(var i = 0; i < campos.length;i++){
         //reseta os valores
         campos[i].innerHTML= "";
-        campos[i].style.color="white";
     }
     fimdejogo = false;
     avisar("");
