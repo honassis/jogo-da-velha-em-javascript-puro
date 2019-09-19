@@ -1,17 +1,24 @@
 //X = true, O = false
 var player = true;
 var fimdejogo = false;
-//recebe os valores da velha
+//recebe os valores do jogo
 var campos = document.getElementsByClassName("p");
-
-function status_jogador(){
+//seta as cores padrão das formas de jgoar
+var cores = {
+    x:"yellow",
+    o: "red",
+    ganhou:"black"
+}
+function status_jogador(pos){
     //retorna o jogador atual, e já atualiza o próximo player
     var status;
     if(player){
         document.getElementById("player").innerHTML = "VEZ DE : O";
+       campos[pos].style.color=cores.x;
         status = "X";
     }else{
         document.getElementById("player").innerHTML = "VEZ DE : X";
+        campos[pos].style.color=cores.o;
         status = "O";
     }
     player = !player;
@@ -32,9 +39,13 @@ function verificar(x_o){
             campos[possibilidade  [i]    [0]].innerHTML == x_o &&
             campos[possibilidade  [i]    [1]].innerHTML == x_o &&
             campos[possibilidade  [i]    [2]].innerHTML == x_o) {
-          
+            
               avisar("JOGADOR "+x_o+" VENCEU!");
                 fimdejogo = true;
+                //marca onde o jogo foi ganho
+                campos[possibilidade  [i]    [0]].style.color=cores.ganhou;
+                campos[possibilidade  [i]    [1]].style.color=cores.ganhou;
+                campos[possibilidade  [i]    [2]].style.color=cores.ganhou;
             
             break;
         }
@@ -61,7 +72,7 @@ function marcar(pos){
     if(!fimdejogo){   
         if(campos[pos].innerHTML==""){
          //primeiro verifica se alguém não clicou, e então aplica
-        var jogador = status_jogador();
+        var jogador = status_jogador(pos);
         campos[pos].innerHTML= jogador;
         verificar(jogador);
         }
@@ -83,6 +94,7 @@ function reiniciar(){
     for(var i = 0; i < campos.length;i++){
         //reseta os valores
         campos[i].innerHTML= "";
+        campos[i].style.color="white";
     }
     fimdejogo = false;
     avisar("");
