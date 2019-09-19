@@ -58,10 +58,10 @@ function avisar(mensagem){
     document.getElementById("mensagem").innerHTML = mensagem;
 }
 function marcar(pos){
-    if(!fimdejogo){
-        var jogador = status_jogador();
-        //primeiro verifica se alguém não clicou, e então aplica
+    if(!fimdejogo){   
         if(campos[pos].innerHTML==""){
+         //primeiro verifica se alguém não clicou, e então aplica
+        var jogador = status_jogador();
         campos[pos].innerHTML= jogador;
         verificar(jogador);
         }
