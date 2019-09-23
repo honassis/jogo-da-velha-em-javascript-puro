@@ -20,6 +20,7 @@ body{
     cursor: pointer;
     color:white;
     transition: .3s;
+    user-select: none;
 }
 .reiniciar:hover{
     color:lightgray;
@@ -70,4 +71,7 @@ body{
     position: absolute;
     bottom:0px;
 
+}
+#player{
+    user-select: none;
 }
